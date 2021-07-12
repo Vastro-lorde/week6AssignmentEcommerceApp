@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+</head>
+<body>
+    <h1>Vast E-Commerce</h1>
+    <p>Welcome Vast E-Commerce</p>
+    <a href="/products">Products List</a>
+    <form action="/add-product" method="POST">
+        <input type="text" name="name" id="" placeholder="Name">
+        <input type="text" name="description" id="" placeholder="Description">
+        <input type="url" name="image" id="" placeholder="URL of Image">
+        <input type="number" name="price" id="" placeholder="Price">
+        <input type="submit" value="Add Product">
+    </form>
+    <form action="/products" method="PUT">
+        <input type="number" name="" id="" placeholder="id">
+        <input type="text" name="name" id="" placeholder="Name">
+        <input type="text" name="description" id="" placeholder="Description">
+        <input type="url" name="image" id="" placeholder="URL of Image">
+        <input type="number" name="price" id="" placeholder="Price">
+        <input type="submit" value="Update Product">
+    </form>
+    <form action="/product/:id" method="GET">
+        <input type="number" name="id" id="" placeholder="Id of product">
+        <input type="submit" value="Find Product">
+    </form>
+
+</body>
+</html>

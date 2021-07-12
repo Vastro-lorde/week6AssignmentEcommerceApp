@@ -1,0 +1,33 @@
+{
+  "name": "ecommerceappweek6task",
+  "version": "1.0.0",
+  "description": "an ecommerce web app, using CRUD.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ecommerceAppWeek6Task"
+  },
+  "keywords": [
+    "ecommerce",
+    "CRUD",
+    "express",
+    "node",
+    "javascript"
+  ],
+  "author": "Seun Daniel omatsola",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.10"
+  }
+}
