@@ -25,13 +25,6 @@ class newProduct{
   }
 }
 
-function changePath(request,response,next){
-  if(request.url === '/product/:id'){request.url === path.join('product',`${request.params.id}`)}
-  console.log(request.url.id);
-  next();
-}
-
-
 // loads the home page.
 app.get('/', (request,response)=>{
   
@@ -39,14 +32,14 @@ app.get('/', (request,response)=>{
   response.sendFile(__dirname + '/views/index.html')
 });
 
-// list all the current products.
+// list all the current products.  END POINT = "/products"
 app.get('/products', (request,response)=>{
     console.log(productsList.length);
     response.json(productsList)
     
 });
 
-// adds a product to the list of products.
+// adds a product to the list of products. END POINT = "/add-product"
 app.post('/add-product', (request,response)=>{
   console.log(request.body);
   const Product = new newProduct(
@@ -59,7 +52,7 @@ app.post('/add-product', (request,response)=>{
   response.json(productsList);
 });
 
-// find a particular product by the id eg. /product/1.
+// find a particular product by the id eg. /product/1. END POINT = "/product/:id"
 app.get('/product/:id',(request, response)=>{
   const itemId = Number(request.params.id);
   const findProduct = productsList.filter(productsList => productsList.id === itemId);
@@ -68,7 +61,7 @@ app.get('/product/:id',(request, response)=>{
   console.log(request.url);
 });
 
-// update the values of an existing product.
+// update the values of an existing product. eg. /product/1. END POINT = "/product/:id"
 app.put('/product/:id', (request,response)=>{
   const itemId = Number(request.params.id);
   let findProduct = productsList.find(p => p.id === itemId);
@@ -84,7 +77,7 @@ app.put('/product/:id', (request,response)=>{
   response.json(productsList);
 });
 
-// delete a product
+// delete a product  eg. /product/1. END POINT = "/product/:id"
 app.delete('/product/:id',(request,response)=>{
   const itemId = Number(request.params.id);
   const findProduct = productsList.findIndex(p => p.id === itemId);
