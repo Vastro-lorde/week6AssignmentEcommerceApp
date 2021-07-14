@@ -7,6 +7,10 @@ const bodyParser = require(`body-parser`);
 const {products} = require(`./models/Product`);
 const path = require(`path`);
 const { request, response } = require('express');
+const updateProduct = require('./controllers/Uproducts');
+const listAllProducts = require('./controllers/getProducts');
+const findAproduct = require('./controllers/getAproduct');
+const addProduct = require('./controllers/addAproduct');
 
 const app = require('express')();
 
@@ -27,55 +31,21 @@ class newProduct{
 
 // loads the home page.
 app.get('/', (request,response)=>{
-  
   console.log(`${productsList[0].name}`);
   response.sendFile(__dirname + '/views/index.html')
 });
 
 // list all the current products.  END POINT = "/products"
-app.get('/products', (request,response)=>{
-    console.log(productsList.length);
-    response.json(productsList)
-    
-});
+app.get('/products', listAllProducts);
 
 // adds a product to the list of products. END POINT = "/add-product"
-app.post('/add-product', (request,response)=>{
-  console.log(request.body);
-  const Product = new newProduct(
-    +productsList.length + 1, 
-    `${request.body.name}`, 
-    `${request.body.description}`,
-    `${request.body.image}`,
-    +request.body.price)
-    productsList.push(Product);
-  response.json(productsList);
-});
+app.post('/add-product', addProduct);
 
 // find a particular product by the id eg. /product/1. END POINT = "/product/:id"
-app.get('/product/:id',(request, response)=>{
-  const itemId = Number(request.params.id);
-  const findProduct = productsList.filter(productsList => productsList.id === itemId);
-  response.json(findProduct)
-  console.log(itemId);
-  console.log(request.url);
-});
+app.get('/product/:id',findAproduct);
 
 // update the values of an existing product. eg. /product/1. END POINT = "/product/:id"
-app.put('/product/:id', (request,response)=>{
-  const itemId = Number(request.params.id);
-  let findProduct = productsList.find(p => p.id === itemId);
-  let index = productsList.indexOf(findProduct)
-  updateProduct ={
-    id: itemId,
-    name: request.body.name,
-    description: request.body.description,
-    image: request.body.image,
-    price: +request.body.price
-  }
-  productsList[index] = updateProduct;
-  response.json(productsList);
-});
+app.put('/product/:id', updateProduct);
 
 // delete a product  eg. /product/1. END POINT = "/product/:id"
 app.delete('/product/:id',(request,response)=>{
