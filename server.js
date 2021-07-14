@@ -17,18 +17,6 @@ const app = require('express')();
 // setting up the middleware
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// creating and declaring the global variables, class and functions
-let productsList = products.products;
-class newProduct{
-  constructor(id, name, description, image, price){
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.image = image;
-    this.price = price;
-  }
-}
-
 // loads the home page.
 app.get('/', (request,response)=>{
   console.log(`${productsList[0].name}`);
