@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // loads the home page.
 app.get('/', (request,response)=>{
-  console.log(`${productsList[0].name}`);
+  console.log(`${products[0].name}`);
   response.sendFile(__dirname + '/views/index.html')
 });
 
